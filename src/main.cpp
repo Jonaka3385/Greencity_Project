@@ -1,13 +1,13 @@
 /**
    @file main.cpp
-   @author Marco Roobi (marco.roobi@h-brs.de)
-   @brief Blink Example
+   @author Marco Roobi (marco.roobi@h-brs.de) and group 6
+   @brief Main
           RAK4631
    @version 1.0
    @date 2023-03-01
 **/
 
-#define EXAMPLE_TEXT "Blink Example\n"
+#define EXAMPLE_TEXT "Main\n"
 
 #include "main.h"
 
@@ -31,20 +31,31 @@ void setup(void)
     pinMode(SOIL_PIN, INPUT);
 
     // ADD YOUR CODE HERE
+    pinMode(PIR_PIN, INPUT_PULLUP);
+    digitalWrite(LED_BLUE, !digitalRead(PIR_PIN));
 
     // Keep the actual timestamp for the loop
     timeout = millis();
     // Setup finished...
     MYLOG("SETUP", "Starting LOOP...");
 }
-void bodenFeutigikeit(){
-uint16_t data = analogRead(SOIL_PIN);
+
+void bodenFeutigikeit()
+{
+    uint16_t data = analogRead(SOIL_PIN);
     Serial.print("A1_Data:");
     Serial.print(data);
     Serial.print(",A1_Volt:");
     Serial.println(data * ( 3.3 / 1023.0 ));
     timeout = millis();
 
+}
+
+void pir()
+{
+    digitalWrite(LED_GREEN,!led_state);
+    led_state = !led_state;
+    timeout = millis();
 }
 
 /**
@@ -112,6 +123,4 @@ void initSerial()
     Serial.print(EXAMPLE_TEXT);
     Serial.printf("SW Version %d.%d.%d\n", SW_VERSION_1, SW_VERSION_2, SW_VERSION_3);
     Serial.print("============================\n");
-
-    
 }
