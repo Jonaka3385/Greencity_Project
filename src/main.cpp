@@ -28,6 +28,7 @@ void setup(void)
 {
     initLeds();
     initSerial();
+    pinMode(SOIL_PIN, INPUT);
 
     // ADD YOUR CODE HERE
 
@@ -35,6 +36,15 @@ void setup(void)
     timeout = millis();
     // Setup finished...
     MYLOG("SETUP", "Starting LOOP...");
+}
+void bodenFeutigikeit(){
+uint16_t data = analogRead(SOIL_PIN);
+    Serial.print("A1_Data:");
+    Serial.print(data);
+    Serial.print(",A1_Volt:");
+    Serial.println(data * ( 3.3 / 1023.0 ));
+    timeout = millis();
+
 }
 
 /**
@@ -46,6 +56,7 @@ void loop(void)
     // Simple non-blocking loop
     if ((millis() - timeout) > LOOP_TIMEOUT)
     {
+      bodenFeutigikeit();
         digitalWrite(LED_BLUE,  led_state);
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
@@ -101,4 +112,6 @@ void initSerial()
     Serial.print(EXAMPLE_TEXT);
     Serial.printf("SW Version %d.%d.%d\n", SW_VERSION_1, SW_VERSION_2, SW_VERSION_3);
     Serial.print("============================\n");
+
+    
 }
