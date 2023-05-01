@@ -97,9 +97,8 @@ void initGNSS()
     digitalWrite(LED_GREEN, LOW);
     SERIAL_PC.println("Bridge:");
 }
-void GNSS(){
-
-}if (SERIAL_GNSS.available())
+void gNSS(){ 
+    if (SERIAL_GNSS.available())
     {
         SERIAL_PC.write(SERIAL_GNSS.read());
     }
@@ -107,10 +106,7 @@ void GNSS(){
     if (SERIAL_PC.available())
     {
         SERIAL_GNSS.write(SERIAL_PC.read());
-    }
-
-
-
+    }}
 /**
  * @brief Application loop
  *
@@ -122,13 +118,15 @@ void loop(void) {
         bodenFeutigikeit();
         bewegungsSensor();
         lichtsensor();
+        gNSS();
         digitalWrite(LED_BLUE,  led_state);
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
         timeout = millis();
+        
     }
 
-    digitalWrite(LED_BLUE, !digitalRead(PIR_PIN) );
+    
 }
 
 void initLeds() {
