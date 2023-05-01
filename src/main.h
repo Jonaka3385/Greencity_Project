@@ -58,5 +58,10 @@
 #define LOOP_TIMEOUT 1000
 #define SOIL_PIN WB_A1
 #define PIR_PIN WB_IO1
+#define EN3V3_S WB_IO2
+#define LIGHTSENSOR_INT WB_IO3
+#define PWM_MikroE WB_IO4
+#define GNSS_PPS WB_IO5
+#define GNSS_RESET WB_IO6
 
 #endif  // MAIN_H
