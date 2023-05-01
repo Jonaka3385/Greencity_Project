@@ -28,11 +28,9 @@ void setup(void)
 {
     initLeds();
     initSerial();
-    pinMode(SOIL_PIN, INPUT);
 
-    // ADD YOUR CODE HERE
+    pinMode(SOIL_PIN, INPUT);
     pinMode(PIR_PIN, INPUT_PULLUP);
-    digitalWrite(LED_BLUE, !digitalRead(PIR_PIN));
 
     // Keep the actual timestamp for the loop
     timeout = millis();
@@ -53,9 +51,9 @@ void bodenFeutigikeit()
 
 void pir()
 {
-    digitalWrite(LED_GREEN,!led_state);
-    led_state = !led_state;
-    timeout = millis();
+    uint16_t data = analogRead(PIR_PIN);
+    Serial.print("IO1 data:");
+    Serial.println(data);
 }
 
 /**
@@ -67,12 +65,19 @@ void loop(void)
     // Simple non-blocking loop
     if ((millis() - timeout) > LOOP_TIMEOUT)
     {
-      bodenFeutigikeit();
+        bodenFeutigikeit();
         digitalWrite(LED_BLUE,  led_state);
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
         timeout = millis();
+
+        pir();
+        digitalWrite(LED_GREEN,!led_state);
+        led_state = !led_state;
+        timeout = millis();
     }
+
+    digitalWrite(LED_BLUE, !digitalRead(PIR_PIN) );
 }
 
 void initLeds()
