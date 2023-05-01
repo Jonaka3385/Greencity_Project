@@ -10,6 +10,10 @@
 #define EXAMPLE_TEXT "Main\n"
 
 #include "main.h"
+#include "Adafruit_Sensor.h"
+#include "Adafruit_TSL2561_U.h"
+
+Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(LIGHTSENSOR_INT);
 
 // variable to keep a timestamp
 time_t timeout;
@@ -30,15 +34,13 @@ void intPIRCallback();
  * @brief Application specific setup functions
  *
  */
-void setup(void)
-{
+void setup(void) {
     initLeds();
     initSerial();
 
     pinMode(SOIL_PIN, INPUT);
     pinMode(PIR_PIN, INPUT_PULLUP);
-
-    // ADD YOUR CODE HERE
+    pinMode(LIGHTSENSOR_INT, INPUT);
 
     // Keep the actual timestamp for the loop
     timeout = millis();
@@ -46,46 +48,47 @@ void setup(void)
     MYLOG("SETUP", "Starting LOOP...");
 }
 
-void bodenFeutigikeit()
-{
+void bodenFeutigikeit() {
     uint16_t data = analogRead(SOIL_PIN);
     Serial.print("A1_Data:");
     Serial.print(data);
     Serial.print(",A1_Volt:");
     Serial.println(data * ( 3.3 / 1023.0 ));
     timeout = millis();
-
 }
-void bewegungsSensor(){
+
+void bewegungsSensor() {
   Serial.print("Bewegung:");
   Serial.println(digitalRead(PIR_PIN));
 }
 
-void intPIRCallback()
-{
+void intPIRCallback() {
   pir_fired = true;
 }
 
-
-
+void lichtsensor() {
+    uint16_t broadband, ir;
+    tsl.getLuminosity(&broadband, &ir);
+    Serial.print("Broadband: ");
+    Serial.print(broadband);
+    Serial.print(" IR: ");
+    Serial.print(ir);
+    Serial.print(" Lux: ");
+    Serial.println(tsl.calculateLux(broadband, ir));
+}
 
 /**
  * @brief Application loop
  *
  */
-void loop(void)
-{
+void loop(void) {
     // Simple non-blocking loop
     if ((millis() - timeout) > LOOP_TIMEOUT)
     {
         bodenFeutigikeit();
         bewegungsSensor();
+        lichtsensor();
         digitalWrite(LED_BLUE,  led_state);
-        digitalWrite(LED_GREEN,!led_state);
-        led_state = !led_state;
-        timeout = millis();
-
-        
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
         timeout = millis();
@@ -94,8 +97,7 @@ void loop(void)
     digitalWrite(LED_BLUE, !digitalRead(PIR_PIN) );
 }
 
-void initLeds()
-{
+void initLeds() {
     // Set GPIOs for LED's as Output
     pinMode(LED_GREEN, OUTPUT);
     pinMode(LED_BLUE, OUTPUT);
@@ -105,8 +107,7 @@ void initLeds()
     digitalWrite(LED_BLUE, LOW);
 }
 
-void initSerial()
-{
+void initSerial() {
     // Initialize Serial for debug output
     digitalWrite(LED_GREEN, HIGH);
     Serial.begin(115200);
