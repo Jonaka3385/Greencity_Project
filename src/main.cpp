@@ -85,7 +85,7 @@ void loop(void)
         led_state = !led_state;
         timeout = millis();
 
-        pir();
+        
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
         timeout = millis();
