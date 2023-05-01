@@ -16,9 +16,15 @@ time_t timeout;
 // actual state of one led
 uint8_t led_state = HIGH;
 
+volatile uint8_t pir_fired = false;
+
+time_t pir_timeout;
+
 // forward declarations (needed for platformIO)
 void initLeds();
 void initSerial();
+void initPIR();
+void intPIRCallback();
 
 /**
  * @brief Application specific setup functions
@@ -29,6 +35,7 @@ void setup(void)
     initLeds();
     initSerial();
     pinMode(SOIL_PIN, INPUT);
+    pinMode(PIR_PIN, INPUT_PULLUP);
 
     // ADD YOUR CODE HERE
 
@@ -46,6 +53,18 @@ uint16_t data = analogRead(SOIL_PIN);
     timeout = millis();
 
 }
+void bewegungsSensor(){
+  Serial.print("Bewegung:");
+  Serial.println(digitalRead(PIR_PIN));
+}
+
+void intPIRCallback()
+{
+  pir_fired = true;
+}
+
+
+
 
 /**
  * @brief Application loop
@@ -56,7 +75,8 @@ void loop(void)
     // Simple non-blocking loop
     if ((millis() - timeout) > LOOP_TIMEOUT)
     {
-      bodenFeutigikeit();
+        bodenFeutigikeit();
+        bewegungsSensor();
         digitalWrite(LED_BLUE,  led_state);
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
