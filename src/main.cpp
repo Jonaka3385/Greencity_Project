@@ -12,6 +12,12 @@
 #include "main.h"
 #include "Adafruit_Sensor.h"
 #include "Adafruit_TSL2561_U.h"
+#define SERIAL_PC     Serial
+#define BAUDRATE_PC   115200
+
+#define SERIAL_GNSS   Serial1
+#define BAUDRATE_GNSS 9600
+
 
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(LIGHTSENSOR_INT);
 
@@ -28,7 +34,8 @@ time_t pir_timeout;
 void initLeds();
 void initSerial();
 void initPIR();
-void intPIRCallback();
+void initGNSS();
+
 
 /**
  * @brief Application specific setup functions
@@ -62,9 +69,6 @@ void bewegungsSensor() {
   Serial.println(digitalRead(PIR_PIN));
 }
 
-void intPIRCallback() {
-  pir_fired = true;
-}
 
 void lichtsensor() {
     uint16_t broadband, ir;
@@ -76,6 +80,36 @@ void lichtsensor() {
     Serial.print(" Lux: ");
     Serial.println(tsl.calculateLux(broadband, ir));
 }
+void initGNSS()
+{
+    // Activate 3V power
+    pinMode(WB_IO2, OUTPUT);
+    digitalWrite(WB_IO2, 0);
+    delay(1000);
+    digitalWrite(WB_IO2, 1);
+    delay(1000);
+
+    SERIAL_PC.println("Configure GPS...");
+    // activate the Serial1 interface
+    SERIAL_GNSS.begin(BAUDRATE_GNSS);
+    digitalWrite(LED_GREEN, HIGH);
+    delay(100);
+    digitalWrite(LED_GREEN, LOW);
+    SERIAL_PC.println("Bridge:");
+}
+void GNSS(){
+
+}if (SERIAL_GNSS.available())
+    {
+        SERIAL_PC.write(SERIAL_GNSS.read());
+    }
+
+    if (SERIAL_PC.available())
+    {
+        SERIAL_GNSS.write(SERIAL_PC.read());
+    }
+
+
 
 /**
  * @brief Application loop
@@ -143,4 +177,5 @@ void initSerial() {
     Serial.print(EXAMPLE_TEXT);
     Serial.printf("SW Version %d.%d.%d\n", SW_VERSION_1, SW_VERSION_2, SW_VERSION_3);
     Serial.print("============================\n");
+
 }
