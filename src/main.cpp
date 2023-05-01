@@ -44,6 +44,7 @@ void initGNSS();
 void setup(void) {
     initLeds();
     initSerial();
+    initGNSS();
 
     pinMode(SOIL_PIN, INPUT);
     pinMode(PIR_PIN, INPUT_PULLUP);
@@ -117,7 +118,7 @@ void loop(void) {
     {
         bodenFeutigikeit();
         bewegungsSensor();
-        lichtsensor();
+        //lichtsensor();
         gNSS();
         digitalWrite(LED_BLUE,  led_state);
         digitalWrite(LED_GREEN,!led_state);
