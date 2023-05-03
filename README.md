@@ -1,6 +1,6 @@
 # GreenCity
 
-Quelle: https://github.com/RAKWireless/WisBlock/tree/master/examples
+Quelle: https://github.com/RAKWireless/WisBlock
 
 ## Getting started
 
