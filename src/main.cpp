@@ -46,7 +46,6 @@ void setup(void) {
      
     initLeds();
     initSerial();
-    Wire.begin();
     Serial.println("blubl00");
     Wire.begin();
     initGNSS();
