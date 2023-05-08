@@ -10,7 +10,9 @@
 #define EXAMPLE_TEXT "Main\n"
 
 #include "main.h"
-#include "Adafruit_Sensor.h"
+//#include "Adafruit_Sensor.h"
+#include "SparkFun_u-blox_GNSS_Arduino_Library.h"
+SFE_UBLOX_GNSS g_myGNSS;
 #include "Adafruit_TSL2561_U.h"
 #define SERIAL_PC     Serial
 #define BAUDRATE_PC   115200
@@ -29,7 +31,7 @@ uint8_t led_state = HIGH;
 volatile uint8_t pir_fired = false;
 
 time_t pir_timeout;
-
+long g_lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
 // forward declarations (needed for platformIO)
 void initLeds();
 void initSerial();
@@ -44,12 +46,13 @@ void initGNSS();
 void setup(void) {
     initLeds();
     initSerial();
+    Serial.println("blubl00");
     initGNSS();
 
     pinMode(SOIL_PIN, INPUT);
     pinMode(PIR_PIN, INPUT_PULLUP);
     pinMode(LIGHTSENSOR_INT, INPUT);
-
+     Wire.begin();
     // Keep the actual timestamp for the loop
     timeout = millis();
     // Setup finished...
@@ -81,34 +84,67 @@ void lichtsensor() {
     Serial.print(" Lux: ");
     Serial.println(tsl.calculateLux(broadband, ir));
 }
+
 void initGNSS()
 {
+    Serial.println("blubl01");
     // Activate 3V power
     pinMode(WB_IO2, OUTPUT);
     digitalWrite(WB_IO2, 0);
+    Serial.println("WB_IO01");
     delay(1000);
     digitalWrite(WB_IO2, 1);
+    Serial.println("WB_IO02");
     delay(1000);
+    Serial.println("WB_IO00");
 
-    SERIAL_PC.println("Configure GPS...");
+
+    Serial.println("Configure GPS...");
     // activate the Serial1 interface
-    SERIAL_GNSS.begin(BAUDRATE_GNSS);
-    digitalWrite(LED_GREEN, HIGH);
-    delay(100);
-    digitalWrite(LED_GREEN, LOW);
-    SERIAL_PC.println("Bridge:");
+   // SERIAL_GNSS.begin(BAUDRATE_GNSS);
+    //digitalWrite(LED_GREEN, HIGH);
+    //delay(100);
+    //digitalWrite(LED_GREEN, LOW);
+    //SERIAL_PC.println("Bridge:");
+    if (g_myGNSS.begin() == false) //Connect to the u-blox module using Wire port
+  {
+    Serial.println(F("u-blox GNSS not detected at default I2C address. Please check wiring. Freezing."));
+    while (1);
+  }
+
+  g_myGNSS.setI2COutput(COM_TYPE_UBX); //Set the I2C port to output UBX only (turn off NMEA noise)
+  g_myGNSS.saveConfigSelective(VAL_CFG_SUBSEC_IOPORT); //Save (only) the communications port settings to flash and BBR
 }
 void gNSS(){ 
    
-    if (SERIAL_GNSS.available())
-    {
-        SERIAL_PC.write(SERIAL_GNSS.read());
-    }
+    g_lastTime = millis(); //Update the timer
+    long latitude = g_myGNSS.getLatitude();
+    Serial.print(F("Lat: "));
+    Serial.print(latitude);
 
-    if (SERIAL_PC.available())
-    {
-        SERIAL_GNSS.write(SERIAL_PC.read());
-    } 
+    long longitude = g_myGNSS.getLongitude();
+    Serial.print(F(" Long: "));
+    Serial.print(longitude);
+    Serial.print(F(" (degrees * 10^-7)"));
+
+    long altitude = g_myGNSS.getAltitude();
+    Serial.print(F(" Alt: "));
+    Serial.print(altitude);
+    Serial.print(F(" (mm)"));
+    
+    long speed = g_myGNSS.getGroundSpeed();
+    Serial.print(F(" Speed: "));
+    Serial.print(speed);
+    Serial.print(F(" (mm/s)"));
+
+    long heading = g_myGNSS.getHeading();
+    Serial.print(F(" Heading: "));
+    Serial.print(heading);
+    Serial.print(F(" (degrees * 10^-5)"));
+
+    byte SIV = g_myGNSS.getSIV();
+    Serial.print(F(" SIV: "));
+    Serial.println(SIV);
    
     }
 /**
@@ -122,7 +158,7 @@ void loop(void) {
         bodenFeutigikeit();
         bewegungsSensor();
         lichtsensor();
-        //gNSS();
+        gNSS();
         digitalWrite(LED_BLUE,  led_state);
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
