@@ -10,10 +10,9 @@
 #define EXAMPLE_TEXT "Main\n"
 
 #include "main.h"
-//#include "Adafruit_Sensor.h"
+#include "Adafruit_Sensor.h"
 #include "SparkFun_u-blox_GNSS_Arduino_Library.h"
 SFE_UBLOX_GNSS g_myGNSS;
-#include "Adafruit_TSL2561_U.h"
 #define SERIAL_PC     Serial
 #define BAUDRATE_PC   115200
 
@@ -21,7 +20,7 @@ SFE_UBLOX_GNSS g_myGNSS;
 #define BAUDRATE_GNSS 9600
 
 
-Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(LIGHTSENSOR_INT);
+
 
 // variable to keep a timestamp
 time_t timeout;
@@ -75,14 +74,7 @@ void bewegungsSensor() {
 
 
 void lichtsensor() {
-    uint16_t broadband, ir;
-    tsl.getLuminosity(&broadband, &ir);
-    Serial.print("Broadband: ");
-    Serial.print(broadband);
-    Serial.print(" IR: ");
-    Serial.print(ir);
-    Serial.print(" Lux: ");
-    Serial.println(tsl.calculateLux(broadband, ir));
+   
 }
 
 void initGNSS()
