@@ -10,9 +10,12 @@
 #define EXAMPLE_TEXT "Main\n"
 
 #include "main.h"
+<<<<<<< HEAD
 //#include "Adafruit_Sensor.h"
 #include "SparkFun_u-blox_GNSS_Arduino_Library.h"
 SFE_UBLOX_GNSS g_myGNSS;
+=======
+>>>>>>> d9a900100c6b03bf05d4e8fcd8b58706a1ea662a
 #include "Adafruit_TSL2561_U.h"
 #define SERIAL_PC     Serial
 #define BAUDRATE_PC   115200
