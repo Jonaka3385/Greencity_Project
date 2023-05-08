@@ -45,13 +45,13 @@ void initGNSS();
 void setup(void) {
     initLeds();
     initSerial();
+    Wire.begin();
     Serial.println("blubl00");
     initGNSS();
 
     pinMode(SOIL_PIN, INPUT);
     pinMode(PIR_PIN, INPUT_PULLUP);
     pinMode(LIGHTSENSOR_INT, INPUT);
-     Wire.begin();
     // Keep the actual timestamp for the loop
     timeout = millis();
     // Setup finished...
