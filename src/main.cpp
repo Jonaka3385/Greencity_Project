@@ -43,15 +43,17 @@ void initGNSS();
  *
  */
 void setup(void) {
+     
     initLeds();
     initSerial();
     Serial.println("blubl00");
+    Wire.begin();
     initGNSS();
 
     pinMode(SOIL_PIN, INPUT);
     pinMode(PIR_PIN, INPUT_PULLUP);
     pinMode(LIGHTSENSOR_INT, INPUT);
-     Wire.begin();
+    
     // Keep the actual timestamp for the loop
     timeout = millis();
     // Setup finished...
@@ -98,6 +100,7 @@ void initGNSS()
     //delay(100);
     //digitalWrite(LED_GREEN, LOW);
     //SERIAL_PC.println("Bridge:");
+    delay(100);
     if (g_myGNSS.begin() == false) //Connect to the u-blox module using Wire port
   {
     Serial.println(F("u-blox GNSS not detected at default I2C address. Please check wiring. Freezing."));
