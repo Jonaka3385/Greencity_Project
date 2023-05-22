@@ -273,6 +273,8 @@ void bewegungsSensor() {
 }
 
 void initLichtsensor() {
+   g_opt3001.begin(OPT3001_ADDRESS);
+
    OPT3001_Config newConfig;
 
   newConfig.RangeNumber = B1100;
