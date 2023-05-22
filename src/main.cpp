@@ -10,25 +10,18 @@
 #define EXAMPLE_TEXT "Main\n"
 
 #include "main.h"
+#include <LoRaWan-RAK4630.h>
 #include "Adafruit_Sensor.h"
 #include "SparkFun_u-blox_GNSS_Arduino_Library.h" //GPS
 #include <Adafruit_BME680.h> //Environmentsensor 
-#include <SPI.h>
 #include <ClosedCube_OPT3001.h> //Lichtsensor
 #include <U8g2lib.h> //Bildschirm
-
-#define BME_SCK 13
-#define BME_MISO 12
-#define BME_MOSI 11
-#define BME_CS 10
 
 #define SEALEVELPRESSURE_HPA (1013.25)
 
 #define OPT3001_ADDRESS 0x44
 
-
 ClosedCube_OPT3001 g_opt3001;
-
 Adafruit_BME680 bme; // I2C
 SFE_UBLOX_GNSS g_myGNSS;
 // variable to keep a timestamp
@@ -37,10 +30,6 @@ time_t timeout;
 uint8_t led_state = HIGH;
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0);
-
-volatile uint8_t pir_fired = false;
-
-time_t pir_timeout;
 long g_lastTime = 0; //Simple local timer. Limits amount if I2C traffic to u-blox module.
 // forward declarations (needed for platformIO)
 
@@ -197,14 +186,11 @@ void bildschirm(){
   // Depending on the display controller use u8g2.writeBufferXBM() or u8g2.writeBufferXBM2()
   // For SH1122, LD7032, ST7920, ST7986, LC7981, T6963, SED1330, RA8835, MAX7219, LS0?
   // use u8g2.writeBufferXBM2(), for all others use u8g2.writeBufferXBM()
-  u8g2.writeBufferXBM(Serial);			// Write XBM image to serial out
-  
   delay(1000);  
 }
 void initRAK1906(){
     while (!Serial);
   Serial.println(F("BME680 async test"));
-
   if (!bme.begin(0x76)) {
     Serial.println(F("Could not find a valid BME680 sensor, check wiring!"));
   }
