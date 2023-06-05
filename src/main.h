@@ -39,7 +39,13 @@
 #include <Wire.h>
 /** Include the SX126x-API */
 #include <SX126x-Arduino.h>
+#include <LoRaWan-RAK4630.h> //http://librarymanager/All#SX126x
 /** Add your required includes after SX126x-Arduino.h */
+
+/** LoRaWAN forward declarations and settings */
+extern void initLoRaWAN();
+extern void send_lora_frame(void);
+extern bool lorawanJoined;
 
 #if MY_DEBUG > 0
     #define MYLOG(tag, ...)            \
@@ -56,12 +62,9 @@
 
 // ADD YOUR CODE HERE
 #define LOOP_TIMEOUT 1000
+#define LORA_TIMEOUT 30000
 #define SOIL_PIN WB_A1
 #define PIR_PIN WB_IO1
-#define EN3V3_S WB_IO2
-#define LIGHTSENSOR_INT WB_IO3
-#define PWM_MikroE WB_IO4
-#define GNSS_PPS WB_IO5
-#define GNSS_RESET WB_IO6
 
 #endif  // MAIN_H
+
