@@ -46,6 +46,7 @@
 extern void initLoRaWAN();
 extern void send_lora_frame(void);
 extern bool lorawanJoined;
+extern uint16_t bodenFeutigikeit();
 
 #if MY_DEBUG > 0
     #define MYLOG(tag, ...)            \
@@ -62,7 +63,7 @@ extern bool lorawanJoined;
 
 // ADD YOUR CODE HERE
 #define LOOP_TIMEOUT 1000
-#define LORA_TIMEOUT 30000
+#define LORA_TIMEOUT 60000 //60 s (sende abstand )
 #define SOIL_PIN WB_A1
 #define PIR_PIN WB_IO1
 
