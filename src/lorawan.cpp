@@ -125,14 +125,16 @@ void lorawan_confirm_class_handler(DeviceClass_t Class)
   lmh_send(&m_lora_app_data, g_CurrentConfirm);
 }
 
-void send_lora_frame(void)
+void send_lora_frame()
 {
+
     /** are we joined? */
     if (lmh_join_status_get() != LMH_SET)
     {
         //Not joined, try again later
         return;
     }
+    uint16_t data = bodenFeutigikeit();
 
     uint32_t i = 0;
     // reserve some space in memory
@@ -140,13 +142,8 @@ void send_lora_frame(void)
     m_lora_app_data.port = gAppPort;
 
     // SET YOUR PAYLOAD HERE!
-
-    m_lora_app_data.buffer[i++] = 'H';
-    m_lora_app_data.buffer[i++] = 'e';
-    m_lora_app_data.buffer[i++] = 'l';
-    m_lora_app_data.buffer[i++] = 'l';
-    m_lora_app_data.buffer[i++] = 'o';
-    m_lora_app_data.buffer[i++] = '!';
+    m_lora_app_data.buffer[i++] = data;
+    //m_lora_app_data.buffer[i++] = 'F';
     m_lora_app_data.buffsize = i;
 
     lmh_error_status error = lmh_send(&m_lora_app_data, g_CurrentConfirm);

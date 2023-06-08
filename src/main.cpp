@@ -1,16 +1,17 @@
 /**
    @file main.cpp
-   @author Marco Roobi (marco.roobi@h-brs.de)
+   @author Julian Schaa 
    @brief LoRaWan node example with OTAA registration
           RAK4631
-   @version 1.0
-   @date 2023-03-01
+   @version 1.1
+   @date 2023-06-08
 **/
 
 #define EXAMPLE_TEXT "LoRaWan node example with OTAA registration\n"
 
 #include "main.h"
 
+ 
 // variable to keep a timestamp
 time_t timeout;
 time_t timeout_lora;
@@ -30,8 +31,6 @@ void setup(void)
     initLeds();
     initSerial();
     initLoRaWAN();
-    // ADD YOUR CODE HERE
-
     // Set AnalogIn 1 as Input
 
     // Keep the actual timestamp for the loop
@@ -39,6 +38,23 @@ void setup(void)
     timeout_lora = millis();
     // Setup finished...
     MYLOG("SETUP", "Starting LOOP...");
+}
+/**
+ * @brief Bodenfeuchtigkeits messung 
+ *
+ */
+    uint16_t bodenFeutigikeit() {
+    uint16_t data = analogRead(SOIL_PIN);
+    Serial.print("A1_Data:");
+    Serial.print(data);
+    Serial.print(",A1_Volt:");
+    Serial.println(data * (3.3 / 1023.0));
+    Serial.println ((data-340)/2);
+    timeout = millis();
+    //2.50 troken 825
+    //1.10 sehr nass 345
+    //(data-300)/2 
+    return ((data-340)/2);
 }
 
 /**
@@ -50,6 +66,7 @@ void loop(void)
     // Simple non-blocking loop
     if ((millis() - timeout) > LOOP_TIMEOUT)
     {
+        //bodenFeutigikeit();
         digitalWrite(LED_BLUE,  led_state);
         digitalWrite(LED_GREEN,!led_state);
         led_state = !led_state;
