@@ -1,10 +1,10 @@
 /**
    @file lorawan.cpp
-   @author Marco Roobi (marco.roobi@h-brs.de)
+   @author Julian Schaa
    @brief LoRaWan node example with OTAA registration
           RAK4631
-   @version 1.0
-   @date 2023-03-01
+   @version 1.1
+   @date 2023-06-09
 **/
 
 #include "main.h"
@@ -134,6 +134,7 @@ void send_lora_frame()
         //Not joined, try again later
         return;
     }
+    //Aufruf der Methode Bodenfeutigkeit
     uint16_t data = bodenFeutigikeit();
 
     uint32_t i = 0;
@@ -141,11 +142,11 @@ void send_lora_frame()
     memset(m_lora_app_data.buffer, 0, LORAWAN_APP_DATA_BUFF_SIZE);
     m_lora_app_data.port = gAppPort;
 
-    // SET YOUR PAYLOAD HERE!
+    // SET PAYLOAD HERE
     m_lora_app_data.buffer[i++] = data;
-    //m_lora_app_data.buffer[i++] = 'F';
     m_lora_app_data.buffsize = i;
 
+    //fehlerbehandlung 
     lmh_error_status error = lmh_send(&m_lora_app_data, g_CurrentConfirm);
     if (error == LMH_SUCCESS)
     {

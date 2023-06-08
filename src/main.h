@@ -1,10 +1,10 @@
 /**
    @file main.h
-   @author Marco Roobi (marco.roobi@h-brs.de)
+   @author Julian Schaa
    @brief Header File
           RAK4631
-   @version 1.0
-   @date 2023-03-01
+   @version 1.1
+   @date 2023-06-09
  **/
 
 #ifndef MAIN_H

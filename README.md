@@ -1,6 +1,14 @@
 # GreenCity
 
-Quelle: https://github.com/RAKWireless/WisBlock/tree/master/examples
+## Projekt idee und Motivation
+
+Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadruch kann Personal und Wasser eingespart werden.
+
+## Quellen
+ https://github.com/RAKWireless/WisBlock/tree/master/examples
+
+
+
 
 ## Getting started
 
