@@ -44,16 +44,22 @@ void setup(void)
  *
  */
     uint16_t bodenFeutigikeit() {
+        //Read data 
     uint16_t data = analogRead(SOIL_PIN);
+
+    //print data
     Serial.print("A1_Data:");
     Serial.print(data);
     Serial.print(",A1_Volt:");
     Serial.println(data * (3.3 / 1023.0));
+    //print modify Data between 0 and 255 
     Serial.println ((data-340)/2);
     timeout = millis();
     //2.50 troken 825
     //1.10 sehr nass 345
     //(data-300)/2 
+
+    //return modify Data 
     return ((data-340)/2);
 }
 
