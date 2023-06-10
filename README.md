@@ -2,7 +2,6 @@
 
 
 ## Projektidee und Motivation
-
 Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadruch kann Personal und Wasser eingespart werden.
 
 ## Hardware 
@@ -10,9 +9,16 @@ Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 
 
 ## Software 
 
+## Sendeinterwall 
+Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen einegstellt. Jedoch würde im Realbetirb eine Naricht pro Stunde genügen.
+
+## Daten auswertung 
+Die Messdaten sind keine absoluten Werte sondern abhängig von der Boden zusammensetzung. Zusetzlich ist zubeachten, dass die Ausagekraft über die hinreichende Versorgung eine Planze mit Wasser abhängig 
+von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen speziefischen Aufbau nur für pflanzen mit einer Maximalen Wurzeltiefe von 25 cm.
 
 ## Quellen
 https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft/auswirkungen-auf-den-wasserhaushalt/bodenfeuchteundverdunstung.html
+https://www.dwd.de/DE/klimaumwelt/ku_beratung/landwirtschaft/agrar_modelle/ambav.pdf?__blob=publicationFile&v=2
 https://github.com/RAKWireless/WisBlock/tree/master/examples
 
 
