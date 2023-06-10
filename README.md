@@ -1,6 +1,7 @@
 # GreenCity
 
-## Projekt idee und Motivation
+
+## Projektidee und Motivation
 
 Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadruch kann Personal und Wasser eingespart werden.
 
@@ -11,7 +12,8 @@ Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 
 
 
 ## Quellen
- https://github.com/RAKWireless/WisBlock/tree/master/examples
+https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft/auswirkungen-auf-den-wasserhaushalt/bodenfeuchteundverdunstung.html
+https://github.com/RAKWireless/WisBlock/tree/master/examples
 
 
 
