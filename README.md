@@ -4,6 +4,12 @@
 
 Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadruch kann Personal und Wasser eingespart werden.
 
+## Hardware 
+Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 kapazitiv verwendet. Dieser Sensor gibt eine elektronische spannung zurück, diese Spanung haben wir durch Probemessungen mit trocken boden bist überflutten boden auf zwei zahlen für max und min Festgelegt.
+
+## Software 
+
+
 ## Quellen
  https://github.com/RAKWireless/WisBlock/tree/master/examples
 
