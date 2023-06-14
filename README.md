@@ -8,6 +8,11 @@ Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen
 Auf der Pysikalischenebene wird ein Arduino verwendet, der die Bodenfeutigkeit misst und sie über das Lorawan im The Thinks Network(TTN)versendet. Im TTN werden die Empfangenen Daten decodiert und weiter an den MQTT-Broker Übergeben. Die Influx Daten Bank abonniert die entsprechenden Sensoren und speicht die Daten, über Grafana wrden sie dann Dargestellt.
 
 ## Hardware 
+
+### Arduino 
+Als Basis wird das Modular System von WisBlock "RAK Wireless" verwendet.
+ 
+### Sensor 
 Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 kapazitiv verwendet. Dieser Sensor gibt eine elektronische spannung zurück, diese Spanung haben wir durch Probemessungen mit trocken boden bist überflutten boden auf zwei zahlen für max und min Festgelegt.
 
 ## Software 
@@ -17,7 +22,7 @@ Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen einegstell
 
 ## Daten auswertung 
 Die Messdaten sind keine absoluten Werte sondern abhängig von der Boden zusammensetzung. Zusetzlich ist zubeachten, dass die Ausagekraft über die hinreichende Versorgung eine Planze mit Wasser abhängig 
-von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen speziefischen Aufbau nur für pflanzen mit einer Maximalen Wurzeltiefe von 25 cm.
+von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen speziefischen Aufbau nur für pflanzen mit einer Maximalen Wurzeltiefe von 20 cm.
 
 ## Quellen
 https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft/auswirkungen-auf-den-wasserhaushalt/bodenfeuchteundverdunstung.html
