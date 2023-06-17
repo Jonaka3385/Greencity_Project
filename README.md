@@ -28,12 +28,13 @@ Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 
 Als Entwicklungsumgebung wurde Visual Studio Code verwendet. Zusätzlich wird das PlatformIO PlugIn benötigt, in welchem die NRF52 Plattform installiert und die RAK4631 Cores hinzugefügt werden mussten. 
 
 ### Programmteile
-Die platformio.ini ist die Konfigurationsdatei des Sensors. 
+Die platformio.ini ist die Konfigurationsdatei des Projekts. 
 Die main Dateien sind der Kern des Projekts. In diesen wird alles gestartet und verwaltet. 
-Die lorawan.cpp ist, wie der Name schon sagt, für die Lorawan Kommunikation zuständig und sendet die Daten des Sensors an das Things Network. 
+Die main.cpp kümmert sich um das setup, die Initialisierung und startet die Prozess-Schleife. Die main.h Datei ist für das Definieren aller benötigten Pins und Timeout-Zeiten da und included die benötigten Packages. 
+Die lorawan.cpp ist, wie der Name schon sagt, für die LoraWan Kommunikation zuständig und sendet die Daten des Sensors und kümmert sich um Errors. 
 
 ### Verwendete Packages
-Arduino, Adafruit_TinyUSB, SPI, Wire, SX126x-Arduino, LoRaWan-RAK4630
+Als Packages nutzen wir die Arduino und Adafruit_TinyUSB Libraries, das SPI und Wire Interface und die SX126x-Arduino und LoRaWan-RAK4630 API. 
 
 
 ## Sendeinterwall 
