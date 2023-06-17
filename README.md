@@ -1,6 +1,5 @@
 # GreenCity
 
-
 ## Projektidee und Motivation
 Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar, doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden, damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadurch kann Personal und Wasser eingespart werden.
 
@@ -12,15 +11,25 @@ Auf der Physikalischenebene wird ein Arduino verwendet, der die Bodenfeuchtigkei
 ### Arduino 
 Als Basis wird das Modular System von WisBlock "RAK Wireless" verwendet.
 
-LPWAN Module:     RAK4631 WisBlock    
+LPWAN Module:     RAK4631 WisBlock
 Basis Bord:       RAK19007 WisBlock  
 Adapter Module:   RAK1920 WisBlock 
-
 
 ### Sensor 
 Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 kapazitiv verwendet. Dieser Sensor gibt eine elektronische spannung zurück, diese Spanung haben wir durch Probemessungen mit trocken boden bis überflutten boden auf zwei zahlen für max und min Festgelegt.
 
 ## Software 
+
+### Entwicklungsumgebung
+Als Entwicklungsumgebung wurde Visual Studio Code verwendet. Zusätzlich wird das PlatformIO PlugIn benötigt, in welchem die NRF52 Plattform installiert und die RAK4631 Cores hinzugefügt werden mussten. 
+
+### Programmteile
+Die platformio.ini ist die Konfigurationsdatei des Sensors. 
+Die main Dateien sind der Kern des Projekts. In diesen wird alles gestartet und verwaltet. 
+Die lorawan.cpp ist, wie der Name schon sagt, für die Lorawan Kommunikation zuständig und sendet die Daten des Sensors an das Things Network. 
+
+### Verwendete Packages
+Arduino, Adafruit_TinyUSB, SPI, Wire, SX126x-Arduino, LoRaWan-RAK4630
 
 ## Sendeinterwall 
 Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestellt. Jedoch würde im Realbetrieb eine Naricht pro Stunde genügen.
