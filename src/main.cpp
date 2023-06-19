@@ -47,7 +47,8 @@ void setup(void)
         //Read data 
     float data = analogRead(SOIL_PIN);
     //(Maximalwert - Datenwert) / (Maximalwert - Minimalwert)) * 100
-    float data_prozentual = ((825 - data) / (825 - 345)) * 100;
+    float data_prozentual_f = ((825 - data) / (825 - 345)) * 100;
+    uint8_t data_prozentual = (uint8_t) data_prozentual_f
 
     //print data
     Serial.print("Analoger Wert:");
