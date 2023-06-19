@@ -46,7 +46,7 @@
 extern void initLoRaWAN();
 extern void send_lora_frame(void);
 extern bool lorawanJoined;
-extern uint16_t bodenFeutigikeit();
+extern float bodenFeutigikeit();
 
 #if MY_DEBUG > 0
     #define MYLOG(tag, ...)            \

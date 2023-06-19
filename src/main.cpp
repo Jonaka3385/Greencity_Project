@@ -43,24 +43,30 @@ void setup(void)
  * @brief Bodenfeuchtigkeits messung 
  *
  */
-    uint16_t bodenFeutigikeit() {
+    float bodenFeutigikeit() {
         //Read data 
-    uint16_t data = analogRead(SOIL_PIN);
+    float data = analogRead(SOIL_PIN);
+    //(Maximalwert - Datenwert) / (Maximalwert - Minimalwert)) * 100
+    float data_prozentual = (((1023 - data) / 1023 ) *100) ;
 
     //print data
-    Serial.print("A1_Data:");
-    Serial.print(data);
-    Serial.print(",A1_Volt:");
-    Serial.println(data * (3.3 / 1023.0));
+    Serial.print("Analoger Wert:");
+    Serial.println(data);
+    Serial.print("Boden Feuchtigkeit:");
+    Serial.print(data_prozentual);
+    
+    Serial.println("%");
+    //Serial.print(",A1_Volt:");
+    //Serial.println(data * (3.3 / 1023.0));
     //print modify Data between 0 and 255 
-    Serial.println ((data-340)/2);
+    //Serial.println ((data-340)/2);
     timeout = millis();
     //2.50 troken 825
     //1.10 sehr nass 345
     //(data-300)/2 
 
     //return modify Data 
-    return ((data-340)/2);
+    return (data_prozentual);
 }
 
 /**
