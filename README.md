@@ -25,6 +25,8 @@ Adapter Module:   RAK1920 WisBlock
 ### Sensor 
 Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 kapazitiv verwendet. Dieser Sensor gibt eine elektronische spannung zurück, diese Spanung haben wir durch Probemessungen mit trocken boden bis überflutten boden auf zwei zahlen für max und min Festgelegt.
 
+#### Anschluss
+
 
 ## Software 
 
@@ -44,7 +46,7 @@ Als Packages nutzen wir die Arduino und Adafruit_TinyUSB Libraries, das SPI und 
 ## Sendeinterwall 
 Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestellt. Jedoch würde im Realbetrieb eine Naricht pro Stunde genügen.
 
-## The Thinks Network 
+## The Things Network 
 
 ### Payload
 int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentuale Bodenfeuchte übergibt. 0(%) ist trocken und 100(%) ist nass. 
