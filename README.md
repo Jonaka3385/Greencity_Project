@@ -40,12 +40,18 @@ Als Packages nutzen wir die Arduino und Adafruit_TinyUSB Libraries, das SPI und 
 ## Sendeinterwall 
 Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestellt. Jedoch würde im Realbetrieb eine Naricht pro Stunde genügen.
 
+## The Thinks Network 
 
-## Payload
+### Payload
 int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentuale Bodenfeuchte übergibt. 0(%) ist trocken und 100(%) ist nass. 
 
+##  Mqtt
 
-## Daten auswertung 
+## influx DB 
+
+## Grafana 
+
+### Daten auswertung 
 Die Messdaten sind keine absoluten Werte, sondern abhängig von der Boden zusammensetzung. Zusetzlich ist zubeachten, dass die Ausagekraft über die hinreichende Versorgung eine Pflanze mit Wasser abhängig 
 von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen spezifischen Aufbau nur für Pflanzen mit einer maximalen Wurzeltiefe von 20 cm.
 
@@ -54,6 +60,6 @@ von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen spezifischen Aufbau nu
 https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft/auswirkungen-auf-den-wasserhaushalt/bodenfeuchteundverdunstung.html
 https://www.dwd.de/DE/klimaumwelt/ku_beratung/landwirtschaft/agrar_modelle/ambav.pdf?__blob=publicationFile&v=2  
 https://github.com/RAKWireless/WisBlock/tree/master/examples  
-https://www.thethingsindustries.com/docs/integrations/\npayload-formatters/javascript/uplink/  
+https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/  
 https://test-wetterstation.de/arduino-moisture-sensor  
 
