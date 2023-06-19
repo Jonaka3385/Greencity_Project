@@ -188,4 +188,5 @@ https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft/auswirkungen-au
 https://www.dwd.de/DE/klimaumwelt/ku_beratung/landwirtschaft/agrar_modelle/ambav.pdf?__blob=publicationFile&v=2
 https://github.com/RAKWireless/WisBlock/tree/master/examples
 https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/
+https://test-wetterstation.de/arduino-moisture-sensor
 
