@@ -2,6 +2,10 @@
 ![gif](./Image/giphy.gif)
 
 ## Projektidee und Motivation
+Eine Smart City ist eine vernetzte Stadt, die oft als Lösung für verschiedene Herausforderungen des städtischen Lebens betrachtet wird. sie sind ausserdem Nachhaltig und wirken positive auf die Wirtschaft.
+
+Allgemein werden Smart Cities entwickelt um Effizienzsteigerung durch den Einsatz intelligenter Technologien und Datenanalyse zu erreichen. ausserdem steht Ressourcenmanagement im Vordergrund da Smart Cities darauf abzielen, den Ressourcenverbrauch zu optimieren und nachhaltige Lösungen zu fördern. Das ganze führt dazu die Lebensqualität der Bürger zu verbessern. Zum Beispiel können Sensoren in der Stadt Luftqualität und Lärmbelastung überwachen, um die Umweltbedingungen zu verbessern.
+
 Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar, doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden, damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadurch kann Personal und Wasser eingespart werden.
 
 
@@ -40,18 +44,12 @@ Als Packages nutzen wir die Arduino und Adafruit_TinyUSB Libraries, das SPI und 
 ## Sendeinterwall 
 Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestellt. Jedoch würde im Realbetrieb eine Naricht pro Stunde genügen.
 
-## The Thinks Network 
 
-### Payload
+## Payload
 int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentuale Bodenfeuchte übergibt. 0(%) ist trocken und 100(%) ist nass. 
 
-##  Mqtt
 
-## influx DB 
-
-## Grafana 
-
-### Daten auswertung 
+## Daten auswertung 
 Die Messdaten sind keine absoluten Werte, sondern abhängig von der Boden zusammensetzung. Zusetzlich ist zubeachten, dass die Ausagekraft über die hinreichende Versorgung eine Pflanze mit Wasser abhängig 
 von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen spezifischen Aufbau nur für Pflanzen mit einer maximalen Wurzeltiefe von 20 cm.
 
@@ -60,6 +58,6 @@ von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen spezifischen Aufbau nu
 https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft/auswirkungen-auf-den-wasserhaushalt/bodenfeuchteundverdunstung.html
 https://www.dwd.de/DE/klimaumwelt/ku_beratung/landwirtschaft/agrar_modelle/ambav.pdf?__blob=publicationFile&v=2  
 https://github.com/RAKWireless/WisBlock/tree/master/examples  
-https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/  
+https://www.thethingsindustries.com/docs/integrations/\npayload-formatters/javascript/uplink/  
 https://test-wetterstation.de/arduino-moisture-sensor  
 
