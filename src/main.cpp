@@ -45,11 +45,10 @@ void setup(void)
  */
     uint8_t bodenFeutigikeit() {
         //Read data 
-    float data = analogRead(SOIL_PIN);
+    uint8_t data = analogRead(SOIL_PIN);
     //(Maximalwert - Datenwert) / (Maximalwert - Minimalwert)) * 100
-    float data_prozentual_f = ((825 - data) / (825 - 345)) * 100;
-    uint8_t data_prozentual = (uint8_t) data_prozentual_f;
-
+    uint8_t data_prozentual = (uint8_t) (((825 - data) / (825 - 345)) * 100);
+    
     //print data
     Serial.print("Analoger Wert:");
     Serial.println(data);
