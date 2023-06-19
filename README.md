@@ -40,9 +40,9 @@ Als Packages nutzen wir die Arduino und Adafruit_TinyUSB Libraries, das SPI und 
 ## Sendeinterwall 
 Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestellt. Jedoch würde im Realbetrieb eine Naricht pro Stunde genügen.
 
+
 ## Payload
-
-
+int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentuale Bodenfeuchte übergibt. 0(%) ist trocken und 100(%) ist nass. 
 
 
 ## Daten auswertung 
