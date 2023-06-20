@@ -18,9 +18,12 @@ Auf der Physikalischenebene wird ein Arduino verwendet, der die Bodenfeuchtigkei
 ### Arduino 
 Als Basis wird das Modular System von WisBlock "RAK Wireless" verwendet.
 
-LPWAN Module:     RAK4631 WisBlock  ![rak4631](./Image/rak4631.png)
+LPWAN Module:     RAK4631 WisBlock 
+ ![rak4631](./Image/rak4631.png)
 Basis Bord:       RAK19007 WisBlock  
+![rak4631](./Image/RAK19007.png)
 Adapter Module:   RAK1920 WisBlock  
+![rak4631](./Image/RAK1920.png)
 
 ### Sensor 
 Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 kapazitiv verwendet. Dieser Sensor gibt eine elektronische spannung zurück, diese Spanung haben wir durch Probemessungen mit trocken boden bis überflutten boden auf zwei zahlen für max und min Festgelegt.
