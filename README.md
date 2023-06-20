@@ -20,7 +20,7 @@ Als Basis wird das Modular System von WisBlock "RAK Wireless" verwendet.
 
 LPWAN Module:     RAK4631 WisBlock 
 ![rak4631](./Image/rak4631.png)
-<img src="rak4631.png" alt="rak4631" width="200px"/>
+<img src="./Image/rak4631.png" alt="rak4631" width="200px"/>
 
 Basis Bord:       RAK19007 WisBlock 
 ![rak19007](./Image/RAK19007.png)
