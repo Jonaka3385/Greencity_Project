@@ -72,7 +72,7 @@ Der Netzwerkserver aus dem TTN übergibt die Daten an den MQTT-Server. Die Daten
 Als Zeitdatenbank wird InfluxDB verwendenet. Dort werden die Messdaten des Bodenfeuchtigkeitssensors zusammen mit der aktuellen zeit gespeichert. Zuerst mussen aber die Daten die als JSON bei dem Influx-Server ankommmen durch das Phytonscript sennet.py herrausgezogen werden.
 
 ## Grafana 
-In Grafana werden die Messdaten Visalisiert und als Graph angezeigt.
+In Grafana werden die Messdaten Visalisiert und als Graph angezeigt.[Grafana Dashboard ](./Serverscript/grafanamodel.json)
 
 
 <img src="./Image/Grafana.PNG" alt="Grafana" width="600px"/>
