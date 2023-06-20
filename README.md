@@ -8,6 +8,7 @@ Allgemein werden Smart Cities entwickelt um Effizienzsteigerung durch den Einsat
 
 Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar, doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden, damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadurch kann Personal und Wasser eingespart werden.
 
+<img src="./Image/HardwareMitBaum.jpeg" alt="Baum" width="600px"/>
 
 ## Aufbau
 Auf der Physikalischenebene wird ein Arduino verwendet, der die Bodenfeuchtigkeit misst und sie über das Lorawan im The Things Network(TTN) versendet. Im TTN werden die Empfangenen Daten decodiert und weiter an den MQTT-Broker Übergeben. Die Influx Daten Bank abonniert die entsprechenden Sensoren und speichert die Daten, über Grafana werden sie dann Dargestellt.
@@ -27,10 +28,13 @@ Basis Bord:       RAK19007 WisBlock
 Adapter Module:   RAK1920 WisBlock 
 <img src="./Image/RAK1920.png" alt="RAK1920" width="300px"/> 
 
+
+<img src="./Image/Hardware.jpeg" alt="Hardware" width="600px"/>
+
 ### Sensor 
 Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 kapazitiv verwendet. Dieser Sensor gibt eine elektronische spannung zurück, diese Spanung haben wir durch Probemessungen mit trocken boden bis überflutten boden auf zwei zahlen für max und min Festgelegt.
 
-#### Anschluss
+<img src="./Image/Sensor.jpeg" alt="Sensor" width="300px"/>
 
 
 ## Software 
@@ -52,15 +56,22 @@ Als Packages nutzen wir die Arduino und Adafruit_TinyUSB Libraries, das SPI und 
 Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestellt. Jedoch würde im Realbetrieb eine Naricht pro Stunde genügen.
 
 ## The Things Network 
+Das Things Network ist ein Lorwan welches Kostenlos Betieben wird und jeder nutzen kann.
+Hier wird der Sensor Registiert und Paylodformatter angewannt.
 
 ### Payload
 int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentuale Bodenfeuchte übergibt. 0(%) ist trocken und 100(%) ist nass. 
 
-##  Mqtt
+##  MQTT
+Der Netzwerkserver aus dem TTN übergibt die Daten an den MQTT-Server. Die Daten werden dann weiter an die Abonnenten weitergeleite. 
 
 ## Influx DB 
+Als Zeitdatenbank wird InfluxDB verwendenet. Dort werden die Messdaten des Bodenfeuchtigkeitssensors zusammen mit der aktuellen zeit gespeichert. Zuerst mussen aber die Daten die als JSON bei dem Influx-Server ankommmen durch das Phytonscript sennet.py herrausgezogen werden.
 
 ## Grafana 
+In Grafana werden die Messdaten Visalisiert und als Graph angezeigt.
+<img src="./Image/Grafana.png" alt="Grafana" width="600px"/>
+
 
 ### Daten auswertung 
 Die Messdaten sind keine absoluten Werte, sondern abhängig von der Boden zusammensetzung. Zusetzlich ist zubeachten, dass die Ausagekraft über die hinreichende Versorgung eine Pflanze mit Wasser abhängig 
