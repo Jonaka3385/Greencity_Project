@@ -1,10 +1,10 @@
 /**
    @file main.cpp
    @author Julian Schaa 
-   @brief LoRaWan node example with OTAA registration
+   @brief Greencity
           RAK4631
    @version 1.1
-   @date 2023-06-08
+   @date 2023-06-20
 **/
 
 #define EXAMPLE_TEXT "LoRaWan node example with OTAA registration\n"
@@ -45,17 +45,21 @@ void setup(void)
  */
     uint8_t bodenFeutigikeit() {
         //Read data 
-    uint8_t data = analogRead(SOIL_PIN);
+    float data = analogRead(SOIL_PIN);
     //(Maximalwert - Datenwert) / (Maximalwert - Minimalwert)) * 100
-    uint8_t data_prozentual = (uint8_t) (((825 - data) / (825 - 345)) * 100);
+    float data1 =(((825 - data) / (825 - 200)) * 100);
+    uint8_t data_prozentual = (uint8_t) data1;
     
     //print data
     Serial.print("Analoger Wert:");
     Serial.println(data);
+    Serial.println(((825 - data) / (480)));
+    Serial.println((825 - data) );
+    Serial.println((825 - data) );
     Serial.print("Boden Feuchtigkeit:");
-    Serial.print(data_prozentual);
-    
+    Serial.print(data1);
     Serial.println("%");
+
     //Serial.print(",A1_Volt:");
     //Serial.println(data * (3.3 / 1023.0));
     //print modify Data between 0 and 255 
