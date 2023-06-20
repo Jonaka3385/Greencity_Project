@@ -73,7 +73,7 @@ Als Zeitdatenbank wird InfluxDB verwendenet. Dort werden die Messdaten des Boden
 
 ## Grafana 
 In Grafana werden die Messdaten Visalisiert und als Graph angezeigt.
-<img src="./Image/Grafana.png" alt="Grafana" width="600px"/>
+<img src="./Image/Grafana.PNG" alt="Grafana" width="600px"/>
 
 
 ### Daten auswertung 
