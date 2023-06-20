@@ -1,92 +1,93 @@
 # GreenCity
+![gif](./Image/giphy.gif)
 
-Quelle: https://github.com/RAKWireless/WisBlock/tree/master/examples
+## Projektidee und Motivation
+Eine Smart City ist eine vernetzte Stadt, die oft als Lösung für verschiedene Herausforderungen des städtischen Lebens betrachtet wird. sie sind ausserdem Nachhaltig und wirken positive auf die Wirtschaft.
 
-## Getting started
+Allgemein werden Smart Cities entwickelt um Effizienzsteigerung durch den Einsatz intelligenter Technologien und Datenanalyse zu erreichen. ausserdem steht Ressourcenmanagement im Vordergrund da Smart Cities darauf abzielen, den Ressourcenverbrauch zu optimieren und nachhaltige Lösungen zu fördern. Das ganze führt dazu die Lebensqualität der Bürger zu verbessern. Zum Beispiel können Sensoren in der Stadt Luftqualität und Lärmbelastung überwachen, um die Umweltbedingungen zu verbessern.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Durch den Klimawandel wird es in deutschen Städten immer heißer. Grünflächen und Stadtbäume senken die Temperaturen messbar, doch durch die extremen Sommer sind sie von Trockenheit Bedrohnt. Mit dem Projekt GreenCity soll die Wasserversorgung der Stadtbäume aufgezeichnet werden, damit bei austrocknungsgefahr gezielt  bewässert werden kann. Dadurch kann Personal und Wasser eingespart werden.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+<img src="./Image/HardwareMitBaum.jpeg" alt="Baum" width="600px"/>
 
-## Add your files
+## Aufbau
+Auf der Physikalischenebene wird ein Arduino verwendet, der die Bodenfeuchtigkeit misst und sie über das Lorawan im The Things Network(TTN) versendet. Im TTN werden die Empfangenen Daten decodiert und weiter an den MQTT-Broker Übergeben. Die Influx Daten Bank abonniert die entsprechenden Sensoren und speichert die Daten, über Grafana werden sie dann Dargestellt.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-```
-cd existing_repo
-git remote add origin https://git.fslab.de/sennet2023/sennet_gruppe_06/greencity.git
-git branch -M main
-git push -uf origin main
-```
+## Hardware 
 
-## Integrate with your tools
+### Arduino 
+Als Basis wird das Modular System von WisBlock "RAK Wireless" verwendet.
 
-- [ ] [Set up project integrations](https://git.fslab.de/sennet2023/sennet_gruppe_06/greencity/-/settings/integrations)
+LPWAN Module:     RAK4631 WisBlock 
 
-## Collaborate with your team
+<img src="./Image/rak4631.png" alt="rak4631" width="300px"/>
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Basis Bord:       RAK19007 WisBlock 
 
-## Test and Deploy
+<img src="./Image/RAK19007.png" alt="RAK19007" width="300px"/>
 
-Use the built-in continuous integration in GitLab.
+Adapter Module:   RAK1920 WisBlock 
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+<img src="./Image/RAK1920.png" alt="RAK1920" width="300px"/> 
 
-***
 
-# Editing this README
+<img src="./Image/Hardware.jpeg" alt="Hardware" width="600px"/>
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+### Sensor 
+Zur Bodenfeuchtigkeitsmessung wird der Bodenfeuchtesensor Hygrometer Modul V2.0 kapazitiv verwendet. Dieser Sensor gibt eine elektronische spannung zurück, diese Spanung haben wir durch Probemessungen mit trocken boden bis überflutten boden auf zwei zahlen für max und min Festgelegt.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+<img src="./Image/Sensor.jpeg" alt="Sensor" width="300px"/>
 
-## Name
-Choose a self-explaining name for your project.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Software 
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Entwicklungsumgebung
+Als Entwicklungsumgebung wurde Visual Studio Code verwendet. Zusätzlich wird das PlatformIO PlugIn benötigt, in welchem die NRF52 Plattform installiert und die RAK4631 Cores hinzugefügt werden mussten. 
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Programmteile
+Die platformio.ini ist die Konfigurationsdatei des Projekts. 
+Die main Dateien sind der Kern des Projekts. In diesen wird alles gestartet und verwaltet.  
+Die main.cpp kümmert sich um das setup, die Initialisierung und startet die Prozess-Schleife. Die main.h Datei ist für das Definieren aller benötigten Pins und Timeout-Zeiten da und included die benötigten Packages.  
+Die lorawan.cpp ist, wie der Name schon sagt, für die LoraWan Kommunikation zuständig und sendet die Daten des Sensors und kümmert sich um Errors.  
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### Verwendete Packages
+Als Packages nutzen wir die Arduino und Adafruit_TinyUSB Libraries, das SPI und Wire Interface und die SX126x-Arduino und LoRaWan-RAK4630 API. 
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Sendeinterwall 
+Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestellt. Jedoch würde im Realbetrieb eine Naricht pro Stunde genügen.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## The Things Network 
+Das Things Network ist ein Lorwan welches Kostenlos Betieben wird und jeder nutzen kann.
+Hier wird der Sensor Registiert und [ Paylodformatter](./Serverscript/Payloadformatter.js) angewannt.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### Payload
+int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentuale Bodenfeuchte übergibt. 0(%) ist trocken und 100(%) ist nass. 
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+##  MQTT
+Der Netzwerkserver aus dem TTN übergibt die Daten an den MQTT-Server. Die Daten werden dann weiter an die Abonnenten weitergeleite. 
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## Influx DB 
+Als Zeitdatenbank wird InfluxDB verwendenet. Dort werden die Messdaten des Bodenfeuchtigkeitssensors zusammen mit der aktuellen zeit gespeichert. Zuerst mussen aber die Daten die als JSON bei dem Influx-Server ankommmen durch das Phytonscript [sennet.py  ](./Serverscript/sennet.py) herrausgezogen werden.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Grafana 
+In Grafana werden die Messdaten Visalisiert und als Graph angezeigt.[Grafana Dashboard ](./Serverscript/grafanamodel.json)
 
-## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+<img src="./Image/Grafana.PNG" alt="Grafana" width="600px"/>
+
+
+### Daten auswertung 
+Die Messdaten sind keine absoluten Werte, sondern abhängig von der Boden zusammensetzung. Zusetzlich ist zubeachten, dass die Ausagekraft über die hinreichende Versorgung eine Pflanze mit Wasser abhängig 
+von der Durchwurzelungstiefe. Wir Empfelen deshalb diesen spezifischen Aufbau nur für Pflanzen mit einer maximalen Wurzeltiefe von 20 cm.
+
+
+## Quellen
+https://www.nccs.admin.ch/nccs/de/home/sektoren/wasserwirtschaft/auswirkungen-auf-den-wasserhaushalt/bodenfeuchteundverdunstung.html
+https://www.dwd.de/DE/klimaumwelt/ku_beratung/landwirtschaft/agrar_modelle/ambav.pdf?__blob=publicationFile&v=2  
+https://github.com/RAKWireless/WisBlock/tree/master/examples  
+https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/  
+https://test-wetterstation.de/arduino-moisture-sensor  
+
+
