@@ -18,7 +18,7 @@ Auf der Physikalischenebene wird ein Arduino verwendet, der die Bodenfeuchtigkei
 ### Arduino 
 Als Basis wird das Modular System von WisBlock "RAK Wireless" verwendet.
 
-LPWAN Module:     RAK4631 WisBlock  ![gif](./Image/rak4631.png)
+LPWAN Module:     RAK4631 WisBlock  ![rak4631](./Image/rak4631.png)
 Basis Bord:       RAK19007 WisBlock  
 Adapter Module:   RAK1920 WisBlock  
 
