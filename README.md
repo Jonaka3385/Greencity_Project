@@ -60,7 +60,7 @@ Das Sendeinterwall ist auf einmal pro Minute aus Vorführungsgründen eingestell
 
 ## The Things Network 
 Das Things Network ist ein Lorwan welches Kostenlos Betieben wird und jeder nutzen kann.
-Hier wird der Sensor Registiert und Paylodformatter angewannt.
+Hier wird der Sensor Registiert und [ Paylodformatter](./Serverscript/Payloadformatter.js) angewannt.
 
 ### Payload
 int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentuale Bodenfeuchte übergibt. 0(%) ist trocken und 100(%) ist nass. 
@@ -69,7 +69,7 @@ int-Wert mit Größe 1 Byte, welcher mit Werten von 0-100 (in hex) die prozentua
 Der Netzwerkserver aus dem TTN übergibt die Daten an den MQTT-Server. Die Daten werden dann weiter an die Abonnenten weitergeleite. 
 
 ## Influx DB 
-Als Zeitdatenbank wird InfluxDB verwendenet. Dort werden die Messdaten des Bodenfeuchtigkeitssensors zusammen mit der aktuellen zeit gespeichert. Zuerst mussen aber die Daten die als JSON bei dem Influx-Server ankommmen durch das Phytonscript sennet.py herrausgezogen werden.
+Als Zeitdatenbank wird InfluxDB verwendenet. Dort werden die Messdaten des Bodenfeuchtigkeitssensors zusammen mit der aktuellen zeit gespeichert. Zuerst mussen aber die Daten die als JSON bei dem Influx-Server ankommmen durch das Phytonscript [sennet.py  ](./Serverscript/sennet.py) herrausgezogen werden.
 
 ## Grafana 
 In Grafana werden die Messdaten Visalisiert und als Graph angezeigt.[Grafana Dashboard ](./Serverscript/grafanamodel.json)
