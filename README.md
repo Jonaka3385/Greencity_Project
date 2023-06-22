@@ -1,4 +1,4 @@
-# GreenCity
+# GreenCity (closed)
 ![gif](./Image/giphy.gif)
 
 ## Projektidee und Motivation
@@ -90,4 +90,5 @@ https://github.com/RAKWireless/WisBlock/tree/master/examples
 https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/  
 https://test-wetterstation.de/arduino-moisture-sensor  
 
-
+## Status
+Entstanden in einem Projekt an der Hochschule-Bonn-Rhein-Sieg unter Leitung von Michael Rademacher und Marco Roobi. Team bestand aus Jonas Kawohl, Julian Schaa und Mohamad Inalo. Mit Projekt-Ende wurde dieses Repository archiviert und wird nicht weitergeführt. 
